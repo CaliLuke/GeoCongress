@@ -1,0 +1,22 @@
+{
+    "id": "ExtBox1-ext-gen11279",
+    "type": "list",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|initialView": false,
+        "id": "committeeList",
+        "scrollable": "false",
+        "itemTpl": "<div class=\"committee\">{name}</div>",
+        "store": "Committees",
+        "designer|userClassName": "committee.List",
+        "designer|userAlias": "committeelist"
+    },
+    "customConfigs": [],
+    "designerId": "e020b7c4-7fa0-4cad-94ae-db3d25607568",
+    "$viewOrder": 8,
+    "expanded": true
+}

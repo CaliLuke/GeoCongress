@@ -1,0 +1,45 @@
+{
+    "id": "ExtBox1-ext-gen4268",
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "Bill",
+            "Committee",
+            "Legislator",
+            "Vote"
+        ],
+        "stores": [
+            "Districts",
+            "Committees",
+            "Legislators",
+            "States",
+            "Votes",
+            "Bills"
+        ],
+        "views": [
+            "Main",
+            "legislator.TabPanel",
+            "bill.Show"
+        ],
+        "glossOnIcon": false,
+        "icon": "resources/icons/icon.png",
+        "name": "GeoCon",
+        "phoneStartupScreen": "resources/loading/Homescreen.jpg",
+        "tabletStartupScreen": "resources/loading/Homescreen~ipad.jpg",
+        "controllers": [
+            "Committee",
+            "Legislator",
+            "SplashScreen"
+        ]
+    },
+    "customConfigs": [],
+    "designerId": "application",
+    "$viewOrder": 0,
+    "iconCls": "icon-application",
+    "expanded": true
+}

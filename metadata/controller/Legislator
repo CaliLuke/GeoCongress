@@ -1,0 +1,151 @@
+{
+    "id": "ExtBox1-ext-gen5218",
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Legislator"
+    },
+    "customConfigs": [],
+    "designerId": "7519b28b-d373-4e48-a46f-de8b78af31ae",
+    "$viewOrder": 1,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen14204",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLegislatorShow",
+                "implHandler": "Ext.getCmp('viewport').getLayout().getAnimation().setReverse(false);",
+                "name": "activate",
+                "designer|targetType": "Ext.tab.Panel",
+                "designer|controlQuery": "#legislatorTabPanel",
+                "designer|userClassName": "onLegislatorShow"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen14674",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLegislatorTap",
+                "implHandler": "if (this.currentLegislator == record.data) {\n    Ext.getCmp('viewport').setActiveItem(1);\n    return;\n}\n\nthis.currentLegislator = record.data;\n\nthis.currentLegislator.committees = Ext.getStore('Committees').load({\n    params: {\n        bioguide_id: this.currentLegislator.bioguide_id\n    }\n});\n\nvar legislator = Ext.getCmp('legislatorTabPanel');\nExt.getCmp('splashScreen').animateTo('left');\n\nif (legislator) {\n    legislator.setData(this.currentLegislator);\n    Ext.getCmp('viewport').setActiveItem(1);\n} else {\n    Ext.getCmp('viewport').setActiveItem({\n        xclass: 'GeoCon.view.legislator.TabPanel'\n    });\n}\n\nExt.getCmp('legislatorBio').setData(this.currentLegislator);\nExt.getCmp('legislatorToolbar').setTitle(this.currentLegislator.title + \" \" + this.currentLegislator.lastname);\nExt.getCmp('legislatorTabPanel').setActiveItem(0);",
+                "name": "itemtap",
+                "designer|targetType": "Ext.dataview.List",
+                "designer|controlQuery": "#legislatorList",
+                "designer|userClassName": "onLegislatorTap"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen15094",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onBillListActivate",
+                "implHandler": "if (this.currentBills != this.currentLegislator.bioguide_id) {\n    Ext.getStore('Bills').load({\n        params: {\n            sponsor_id: this.currentLegislator.bioguide_id\n        }\n    });\n    this.currentBills = this.currentLegislator.bioguide_id;\n}",
+                "name": "activate",
+                "designer|targetType": "Ext.dataview.List",
+                "designer|controlQuery": "#billList",
+                "designer|userClassName": "onBillListActivate"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen15510",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onBillTap",
+                "implHandler": "var billSummary = Ext.getCmp('billSummary');\nExt.getCmp('splashScreen').animateTo('left');\n\nif (billSummary) {\n    billSummary.setData(record.data);\n    Ext.getCmp('viewport').setActiveItem(billSummary);\n} else {\n    Ext.getCmp('viewport').setActiveItem({\n        xclass: 'GeoCon.view.bill.Show',\n        data: record.data\n    });\n}\n\nExt.getCmp('billSummaryToolbar').setTitle(record.data.bill_id);",
+                "name": "itemtap",
+                "designer|targetType": "Ext.dataview.List",
+                "designer|controlQuery": "#billList",
+                "designer|userClassName": "onBillTap"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen15926",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onVoteListActivate",
+                "implHandler": "if (this.currentVotes != this.currentLegislator.bioguide_id) {\n\n    var storeParams = {\n        sections: \"basic,voter_ids.\" + this.currentLegislator.bioguide_id\n    };\n    storeParams['voter_ids.' + this.currentLegislator.bioguide_id + '__exists'] = true;\n\n    Ext.getStore('Votes').load({\n        params: storeParams\n    });\n\n    this.currentVotes = this.currentLegislator.bioguide_id;\n}",
+                "name": "activate",
+                "designer|targetType": "Ext.dataview.List",
+                "designer|controlQuery": "#voteList",
+                "designer|userClassName": "onVoteListActivate"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen16447",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLegislatorBackButtonTap",
+                "implHandler": "Ext.getCmp('splashScreen').animateTo('right');\nExt.getCmp('viewport').setActiveItem(Ext.getCmp('splashScreen'));",
+                "name": "tap",
+                "designer|targetType": "Ext.Button",
+                "designer|controlQuery": "#legislatorBackButton",
+                "designer|userClassName": "onLegislatorBackButtonTap"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen16922",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onBillSummaryBackButtonTap",
+                "implHandler": "Ext.getCmp('splashScreen').animateTo('right');\nExt.getCmp('viewport').setActiveItem(Ext.getCmp('legislatorTabPanel'));",
+                "name": "tap",
+                "designer|targetType": "Ext.Button",
+                "designer|controlQuery": "#billSummaryBackButton",
+                "designer|userClassName": "onBillSummaryBackButtonTap"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

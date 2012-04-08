@@ -1,0 +1,172 @@
+{
+    "id": "ExtBox1-ext-gen5294",
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SplashScreen"
+    },
+    "customConfigs": [],
+    "designerId": "a8f0a3e9-df3c-45a3-9e4d-a77f4a5c233a",
+    "$viewOrder": 2,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen18208",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStateChange",
+                "implHandler": "if (newValue) {\n    this.currentState = newValue;\n}\nif (Ext.getCmp('districtSpinner')) {\n    this.updateDistrict();\n}",
+                "name": "change",
+                "designer|targetType": "Ext.field.Select",
+                "designer|controlQuery": "#selectState",
+                "designer|userClassName": "onStateChange"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen18623",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLookupTap",
+                "implHandler": "this.currentDistrict = Ext.getCmp('districtSpinner').getValue();\nthis.loadLegislators();\nthis.onSettingsTap();",
+                "name": "tap",
+                "designer|targetType": "Ext.Button",
+                "designer|controlQuery": "#lookupBtn",
+                "designer|userClassName": "onLookupTap"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen19038",
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "init",
+                "implHandler": "this.location = Ext.create('Ext.util.Geolocation', {\n    autoUpdate: false,\n    listeners: {\n        locationupdate: 'onLocationUpdate',\n        locationerror: 'onLocationError',\n        scope: this\n    }\n});\nthis.location.updateLocation();",
+                "designer|userClassName": "init"
+            },
+            "customConfigs": [],
+            "iconCls": "icon-basic-function",
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen19224",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLocationUpdate",
+                "implHandler": "this.hasLocation = true;\nExt.getStore('Districts').load({\n    params: {\n        latitude: this.location.getLatitude(),\n        longitude: this.location.getLongitude()\n    },\n    callback: function(records) {\n        var district = records && records[0];\n\n        if (district) {\n            var store = Ext.getStore('States'),\n                idx = store.find('abbr', district.data.state),\n                state = store.getAt(idx);\n\n            this.currentDistrict = district.data.number;\n\n            if (state) {\n                this.currentState = state;\n                this.loadLegislators();\n                this.updateSettings();\n            }\n        }\n    },\n    scope: this\n});",
+                "designer|userClassName": "onLocationUpdate"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen19492",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLocationError",
+                "implHandler": "this.hasLocation = true;\nExt.getStore('Districts').load({\n    params: {\n        latitude: 37.381592,\n        longitude: -122.135672\n    },\n    callback: function(records) {\n        var district = records && records[0];\n\n        this.onSettingsTap();\n\n        if (district) {\n            var store = Ext.getStore('States'),\n                idx = store.find('abbr', district.data.state),\n                state = store.getAt(idx);\n\n            this.currentDistrict = district.data.number;\n\n            if (state) {\n                this.currentState = state;\n                this.loadLegislators();\n                this.updateSettings();\n            }\n        }\n        Ext.Msg.alert('Geolocation Unavailable', 'Setting your default location to Sencha HQ');\n    },\n    scope: this\n});",
+                "designer|userClassName": "onLocationError"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen20040",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateSettings",
+                "implHandler": "Ext.getCmp('selectState').setValue(this.currentState.data.abbr);\nthis.updateDistrict();",
+                "designer|userClassName": "updateSettings"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen20278",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onSettingsTap",
+                "implHandler": "if (!this.hasLocation) {\n    this.onLocationError();\n    return;\n}\nvar splashScreen = Ext.getCmp('splashScreen');\n\nif (splashScreen.getActiveItem() == Ext.getCmp('settingsForm')) {\n    splashScreen.setActiveItem(Ext.getCmp('legislatorList'));\n} else {\n    splashScreen.setActiveItem(Ext.getCmp('settingsForm'));\n}",
+                "name": "tap",
+                "designer|targetType": "Ext.Button",
+                "designer|controlQuery": "#settingsBtn",
+                "designer|userClassName": "onSettingsTap"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen20888",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateDistrict",
+                "implHandler": "Ext.getCmp('districtSpinner').setMaxValue(this.currentState.data.maxDistrict);\nExt.getCmp('districtSpinner').setValue(this.currentDistrict || 0);",
+                "designer|userClassName": "updateDistrict"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen21156",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "loadLegislators",
+                "implHandler": "var title = this.currentState.data.abbr + ' District ' + this.currentDistrict,\n    store = Ext.getStore('Legislators'),\n    splashToolbar = Ext.getCmp('splashToolbar');\n\n// If the current legislators are already loaded, don't re-load\nif (splashToolbar.getTitle() == title) {\n    return;\n}\n\nsplashToolbar.setTitle(title);\n\n// First look up the Representative, then the senators for the state.\n// The current API doesn't support this in a single query\nstore.load({\n    params: {\n        state: this.currentState.data.abbr,\n        district: this.currentDistrict\n    },\n    callback: function() {\n        store.load({\n            params: {\n                state: this.currentState.data.abbr,\n                title: 'Sen'\n            },\n            addRecords: true\n        });\n    },\n    scope: this\n});",
+                "designer|userClassName": "loadLegislators"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

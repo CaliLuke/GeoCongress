@@ -1,0 +1,59 @@
+{
+    "id": "ExtBox1-ext-gen7608",
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "groupDir": "DESC",
+        "groupField": "voted_at_str",
+        "model": "Vote",
+        "storeId": "Votes",
+        "designer|userClassName": "Votes"
+    },
+    "customConfigs": [],
+    "designerId": "0590bf4b-b4ee-40d8-8fd5-2faae4ac9ff9",
+    "$viewOrder": 5,
+    "expanded": false,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen7615",
+            "type": "jsonpproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "extraParams": "{\n                apikey: '8a341f85c657435989e75c9a83294762'\n            }",
+                "limitParam": "",
+                "noCache": false,
+                "pageParam": "",
+                "startParam": "",
+                "url": "http://api.realtimecongress.org/api/v1/votes.json",
+                "designer|userClassName": "MyJsonPProxy5"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen7622",
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "rootProperty": "votes",
+                        "designer|userClassName": "MyJsonReader5"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,58 @@
+{
+    "id": "ExtBox1-ext-gen6317",
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "groupField": "state",
+        "model": "Bill",
+        "storeId": "Bills",
+        "designer|userClassName": "Bills"
+    },
+    "customConfigs": [],
+    "designerId": "aee2cebc-140f-445a-8c2b-c9a226a2e62a",
+    "$viewOrder": 2,
+    "expanded": false,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen6324",
+            "type": "jsonpproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "extraParams": "{\n                apikey: '8a341f85c657435989e75c9a83294762'\n            }",
+                "limitParam": "",
+                "noCache": false,
+                "pageParam": "",
+                "startParam": "",
+                "url": "http://api.realtimecongress.org/api/v1/bills.json",
+                "designer|userClassName": "MyJsonPProxy2"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen6331",
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "rootProperty": "bills",
+                        "designer|userClassName": "MyJsonReader2"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        }
+    ]
+}

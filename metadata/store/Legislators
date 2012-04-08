@@ -1,0 +1,60 @@
+{
+    "id": "ExtBox1-ext-gen6683",
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "groupField": "fullTitle",
+        "model": "Legislator",
+        "storeId": "Legislators",
+        "designer|userClassName": "Legislators"
+    },
+    "customConfigs": [],
+    "designerId": "8ea65e8e-858e-4f67-913c-f25b9c30487a",
+    "$viewOrder": 3,
+    "expanded": false,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen6690",
+            "type": "jsonpproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "extraParams": "{\n                apikey: '8a341f85c657435989e75c9a83294762'\n            }",
+                "limitParam": "",
+                "noCache": false,
+                "pageParam": "",
+                "startParam": "",
+                "url": "http://services.sunlightlabs.com/api/legislators.getList.json",
+                "callbackKey": "jsonp",
+                "designer|userClassName": "MyJsonPProxy3"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen6697",
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "rootProperty": "response.legislators",
+                        "record": "legislator",
+                        "designer|userClassName": "MyJsonReader3"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        }
+    ]
+}

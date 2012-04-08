@@ -1,0 +1,110 @@
+{
+    "id": "ExtBox1-ext-gen8616",
+    "type": "container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|initialView": false,
+        "id": "splashScreen",
+        "tpl": null,
+        "layout": "card",
+        "designer|userClassName": "Splash",
+        "designer|userAlias": "splash",
+        "container|animation": "flip"
+    },
+    "customConfigs": [],
+    "designerId": "afeaade4-863e-49b7-950d-e78b46bf3c47",
+    "$viewOrder": 2,
+    "expanded": false,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen22681",
+            "type": "toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "id": "splashToolbar",
+                "itemId": null,
+                "title": "Finding location...",
+                "designer|userClassName": "MyToolbar2"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen22930",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "settingsBtn",
+                        "ui": "plain",
+                        "iconCls": "settings",
+                        "iconMask": true,
+                        "text": null,
+                        "designer|userClassName": "MyButton1"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        },
+        {
+            "id": "ExtBox1-ext-gen23404",
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {},
+            "customConfigs": [],
+            "iconCls": "icon-linkedinstance",
+            "expanded": true,
+            "masterInstanceId": "ExtBox1-ext-gen9468"
+        },
+        {
+            "id": "ExtBox1-ext-gen24505",
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {},
+            "customConfigs": [],
+            "iconCls": "icon-linkedinstance",
+            "expanded": true,
+            "masterInstanceId": "ExtBox1-ext-gen8417"
+        },
+        {
+            "id": "ExtBox1-ext-gen25356",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "animateTo",
+                "designer|params": [
+                    "dir"
+                ],
+                "implHandler": "Ext.getCmp('viewport').getLayout().setAnimation({\n    duration: 300,\n    easing: 'ease-in-out',\n    type: 'slide',\n    direction: dir\n});",
+                "designer|userClassName": "animateTo"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

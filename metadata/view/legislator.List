@@ -1,0 +1,23 @@
+{
+    "id": "ExtBox1-ext-gen9468",
+    "type": "list",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|initialView": false,
+        "id": "legislatorList",
+        "emptyText": "Loading list of Legislators...",
+        "itemTpl": "<div class=\"legislator-list-item\">\n<span class=\"legislator-pic\" style=\"background-image: url(http://www.govtrack.us/data/photos/{govtrack_id}-50px.jpeg);\"></span>\n{lastname}, {firstname} {middlename}\n</div>",
+        "store": "Legislators",
+        "grouped": true,
+        "designer|userClassName": "legislator.List",
+        "designer|userAlias": "legislatorlist"
+    },
+    "customConfigs": [],
+    "designerId": "9f6b7c8b-35c6-4de4-8472-810eb69988eb",
+    "$viewOrder": 6,
+    "expanded": true
+}

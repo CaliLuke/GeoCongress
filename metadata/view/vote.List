@@ -1,0 +1,23 @@
+{
+    "id": "ExtBox1-ext-gen8850",
+    "type": "list",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|initialView": false,
+        "id": "voteList",
+        "itemTpl": "<div class=\"vote\">\n{question}\n<div class=\"results\">\n{result} {vote_breakdown} {required}\n<div>\n</div>\n",
+        "store": "Votes",
+        "disableSelection": true,
+        "grouped": true,
+        "designer|userClassName": "vote.List",
+        "designer|userAlias": "votelist"
+    },
+    "customConfigs": [],
+    "designerId": "89c3dc04-40b8-42c4-94ce-a6b375452470",
+    "$viewOrder": 3,
+    "expanded": true
+}
